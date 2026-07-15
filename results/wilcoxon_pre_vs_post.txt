@@ -1,0 +1,15 @@
+============================================================
+PAIRED WILCOXON SIGNED-RANK TEST REPORT: PRE-RESET VS POST-RESET
+============================================================
+Wilcoxon statistic: 1240.0000
+p-value:            2.3287e-08
+
+Delta (Pre - Post) Statistics:
+  - Median delta: +0.002698
+  - Mean delta:   +0.002457
+  - Std dev:      0.004430
+
+Interpretation:
+The difference is statistically significant (p-value = 2.3287e-08 < 0.05).
+This confirms that Pre-reset membrane potential features systematically and significantly outperform
+Post-reset features in concept probing performance.

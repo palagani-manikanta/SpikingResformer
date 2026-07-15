@@ -1,0 +1,201 @@
+{
+    "summary": {
+        "avg_wrong_concepts": 19.429409734207802,
+        "median_wrong_concepts": 20.0,
+        "std_wrong_concepts": 5.950254438903651,
+        "avg_cosine_similarity": 0.6016138461023236,
+        "avg_euclidean_distance": 3.753312204057979,
+        "avg_bce": 0.40919558683977636,
+        "mean_concept_accuracy": 0.8265231273731446,
+        "nearest_neighbor_euclidean_accuracy": 0.7076285812909907,
+        "nearest_neighbor_cosine_accuracy": 0.9492578529513289
+    },
+    "worst_concepts": [
+        {
+            "concept_index": 101,
+            "concept_name": "has_bill_color::black",
+            "error_rate": 0.4613393165343459
+        },
+        {
+            "concept_index": 84,
+            "concept_name": "has_back_pattern::solid",
+            "error_rate": 0.44045564376941665
+        },
+        {
+            "concept_index": 77,
+            "concept_name": "has_wing_shape::rounded-wings",
+            "error_rate": 0.41594753192958234
+        },
+        {
+            "concept_index": 87,
+            "concept_name": "has_tail_pattern::solid",
+            "error_rate": 0.4116327235070763
+        },
+        {
+            "concept_index": 21,
+            "concept_name": "has_underparts_color::white",
+            "error_rate": 0.40990680013807385
+        },
+        {
+            "concept_index": 8,
+            "concept_name": "has_wing_color::black",
+            "error_rate": 0.4068001380738695
+        },
+        {
+            "concept_index": 75,
+            "concept_name": "has_belly_color::white",
+            "error_rate": 0.3910942354159475
+        },
+        {
+            "concept_index": 14,
+            "concept_name": "has_upperparts_color::black",
+            "error_rate": 0.37676907145322747
+        },
+        {
+            "concept_index": 62,
+            "concept_name": "has_under_tail_color::black",
+            "error_rate": 0.37469796341042455
+        },
+        {
+            "concept_index": 3,
+            "concept_name": "has_bill_shape::all-purpose",
+            "error_rate": 0.37176389368312046
+        }
+    ],
+    "best_concepts": [
+        {
+            "concept_index": 103,
+            "concept_name": "has_crown_color::blue",
+            "error_rate": 0.0505695547117708
+        },
+        {
+            "concept_index": 102,
+            "concept_name": "has_bill_color::buff",
+            "error_rate": 0.049361408353469104
+        },
+        {
+            "concept_index": 24,
+            "concept_name": "has_breast_pattern::striped",
+            "error_rate": 0.04832585433206766
+        },
+        {
+            "concept_index": 46,
+            "concept_name": "has_throat_color::grey",
+            "error_rate": 0.046427338626165
+        },
+        {
+            "concept_index": 71,
+            "concept_name": "has_belly_color::brown",
+            "error_rate": 0.04556437694166379
+        },
+        {
+            "concept_index": 54,
+            "concept_name": "has_forehead_color::blue",
+            "error_rate": 0.04539178460476355
+        },
+        {
+            "concept_index": 110,
+            "concept_name": "has_wing_pattern::spotted",
+            "error_rate": 0.043838453572661376
+        },
+        {
+            "concept_index": 82,
+            "concept_name": "has_shape::duck-like",
+            "error_rate": 0.043838453572661376
+        },
+        {
+            "concept_index": 38,
+            "concept_name": "has_head_pattern::eyebrow",
+            "error_rate": 0.04142216085605799
+        },
+        {
+            "concept_index": 51,
+            "concept_name": "has_eye_color::black",
+            "error_rate": 0.034173282706247844
+        }
+    ],
+    "worst_classes": [
+        {
+            "class_id": 193,
+            "wrong_concepts": 35.13333333333333
+        },
+        {
+            "class_id": 132,
+            "wrong_concepts": 34.43333333333333
+        },
+        {
+            "class_id": 158,
+            "wrong_concepts": 33.53333333333333
+        },
+        {
+            "class_id": 5,
+            "wrong_concepts": 31.818181818181817
+        },
+        {
+            "class_id": 80,
+            "wrong_concepts": 31.6
+        },
+        {
+            "class_id": 128,
+            "wrong_concepts": 31.333333333333332
+        },
+        {
+            "class_id": 148,
+            "wrong_concepts": 30.344827586206897
+        },
+        {
+            "class_id": 168,
+            "wrong_concepts": 28.586206896551722
+        },
+        {
+            "class_id": 189,
+            "wrong_concepts": 28.482758620689655
+        },
+        {
+            "class_id": 124,
+            "wrong_concepts": 28.344827586206897
+        }
+    ],
+    "best_classes": [
+        {
+            "class_id": 69,
+            "wrong_concepts": 8.733333333333333
+        },
+        {
+            "class_id": 34,
+            "wrong_concepts": 8.533333333333333
+        },
+        {
+            "class_id": 173,
+            "wrong_concepts": 8.266666666666667
+        },
+        {
+            "class_id": 139,
+            "wrong_concepts": 8.266666666666667
+        },
+        {
+            "class_id": 102,
+            "wrong_concepts": 8.066666666666666
+        },
+        {
+            "class_id": 16,
+            "wrong_concepts": 7.7407407407407405
+        },
+        {
+            "class_id": 0,
+            "wrong_concepts": 7.733333333333333
+        },
+        {
+            "class_id": 42,
+            "wrong_concepts": 7.655172413793103
+        },
+        {
+            "class_id": 67,
+            "wrong_concepts": 7.233333333333333
+        },
+        {
+            "class_id": 17,
+            "wrong_concepts": 6.466666666666667
+        }
+    ]
+}

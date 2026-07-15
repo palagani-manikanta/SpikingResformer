@@ -1,0 +1,11 @@
+{
+    "validation_accuracy": 100.0,
+    "test_top1_accuracy": 100.0,
+    "test_top5_accuracy": 100.0,
+    "f1_macro": 1.0,
+    "f1_micro": 1.0,
+    "average_per_class_accuracy": 100.0,
+    "correct_top1_predictions": 5794,
+    "correct_top5_predictions": 5794,
+    "total_test_images": 5794
+}

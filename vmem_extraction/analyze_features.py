@@ -32,10 +32,71 @@ def pearson_correlation(x, y):
     r_den = torch.sqrt(torch.sum(xm ** 2) * torch.sum(ym ** 2))
     return (r_num / r_den).item() if r_den != 0 else 0.0
 
+def load_checkpoint(model, checkpoint_path, device):
+    if not os.path.exists(checkpoint_path):
+        raise FileNotFoundError(f"Checkpoint file not found: {checkpoint_path}")
+    
+    print(f"Loading checkpoint from: {checkpoint_path}")
+    checkpoint = torch.load(checkpoint_path, map_location=device)
+    
+    state_dict = None
+    format_detected = None
+    
+    if isinstance(checkpoint, torch.nn.Module):
+        format_detected = "model (full model instance)"
+        state_dict = checkpoint.state_dict()
+    elif isinstance(checkpoint, dict):
+        if "model" in checkpoint:
+            format_detected = "nested state_dict (key: 'model')"
+            val = checkpoint["model"]
+            if isinstance(val, torch.nn.Module):
+                state_dict = val.state_dict()
+            elif isinstance(val, dict):
+                state_dict = val
+            else:
+                raise ValueError("Expected dict or nn.Module for key 'model' in checkpoint")
+        elif "state_dict" in checkpoint:
+            format_detected = "nested state_dict (key: 'state_dict')"
+            val = checkpoint["state_dict"]
+            if isinstance(val, torch.nn.Module):
+                state_dict = val.state_dict()
+            elif isinstance(val, dict):
+                state_dict = val
+            else:
+                raise ValueError("Expected dict or nn.Module for key 'state_dict' in checkpoint")
+        else:
+            format_detected = "raw state_dict"
+            state_dict = checkpoint
+    else:
+        raise ValueError(f"Unknown checkpoint format: {type(checkpoint)}")
+        
+    print(f"Detected checkpoint format: {format_detected}")
+    
+    missing_keys, unexpected_keys = model.load_state_dict(state_dict, strict=True)
+    
+    if missing_keys:
+        print("\n[WARNING] Missing keys when loading state_dict:")
+        for k in missing_keys:
+            print(f"  - {k}")
+    else:
+        print("No missing keys.")
+        
+    if unexpected_keys:
+        print("\n[WARNING] Unexpected keys when loading state_dict:")
+        for k in unexpected_keys:
+            print(f"  - {k}")
+    else:
+        print("No unexpected keys.")
+    print("Checkpoint loading completed.\n")
+
 def main():
     print(f"Loading SpikingResformer-Ti on Device: {device}...")
     model = spikingresformer_ti()
     model.to(device)
+    
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    checkpoint_path = os.path.join(repo_root, "checkpoints", "SpikingResformer-checkpoints", "spikingresformer_ti.pth")
+    load_checkpoint(model, checkpoint_path, device)
     
     for name, m in model.named_modules():
         if isinstance(m, neuron.BaseNode):

@@ -1,0 +1,62 @@
+[
+    {
+        "Experiment": "Baseline (No modifications)",
+        "Mean Train AUC": 0.91,
+        "Mean Val AUC": 0.63,
+        "Mean Test AUC": 0.614,
+        "Concept Acc": 76.33,
+        "Bird Top-1 Acc": 2.35,
+        "Bird Top-5 Acc": 9.61,
+        "Gap (Train-Test AUC)": 0.296
+    },
+    {
+        "Experiment": "Exp A: PCA 90% Var (N=152)",
+        "Mean Train AUC": 0.733171752174272,
+        "Mean Val AUC": 0.6522639367309043,
+        "Mean Test AUC": 0.6433198732293105,
+        "Concept Acc": 82.51685857290794,
+        "Bird Top-1 Acc": 3.1411805315843977,
+        "Bird Top-5 Acc": 12.133241284086987,
+        "Gap (Train-Test AUC)": 0.0898518789449615
+    },
+    {
+        "Experiment": "Exp A: PCA 95% Var (N=333)",
+        "Mean Train AUC": 0.7867410354960719,
+        "Mean Val AUC": 0.6416635702815103,
+        "Mean Test AUC": 0.6360850303469656,
+        "Concept Acc": 82.04469525124513,
+        "Bird Top-1 Acc": 2.7269589230238176,
+        "Bird Top-5 Acc": 11.201242664825681,
+        "Gap (Train-Test AUC)": 0.15065600514910626
+    },
+    {
+        "Experiment": "Exp A: PCA 99% Var (N=1142)",
+        "Mean Train AUC": 0.9123625573546652,
+        "Mean Val AUC": 0.6180048982363646,
+        "Mean Test AUC": 0.6102058889434276,
+        "Concept Acc": 78.86344864145175,
+        "Bird Top-1 Acc": 1.7777010700724887,
+        "Bird Top-5 Acc": 7.956506731101139,
+        "Gap (Train-Test AUC)": 0.30215666841123756
+    },
+    {
+        "Experiment": "Exp B: Class-Weighted BCE",
+        "Mean Train AUC": 0.8958164798404055,
+        "Mean Val AUC": 0.6500140774677702,
+        "Mean Test AUC": 0.6388145723459545,
+        "Concept Acc": 61.59296562946891,
+        "Bird Top-1 Acc": 2.8822920262340355,
+        "Bird Top-5 Acc": 11.149464963755609,
+        "Gap (Train-Test AUC)": 0.25700190749445095
+    },
+    {
+        "Experiment": "Exp C: Dropout (0.5) + L2 (1e-2)",
+        "Mean Train AUC": 0.7739248193215847,
+        "Mean Val AUC": 0.6566080628743266,
+        "Mean Test AUC": 0.6478735485472636,
+        "Concept Acc": 75.25472779722865,
+        "Bird Top-1 Acc": 3.589920607525026,
+        "Bird Top-5 Acc": 12.685536762167759,
+        "Gap (Train-Test AUC)": 0.1260512707743211
+    }
+]

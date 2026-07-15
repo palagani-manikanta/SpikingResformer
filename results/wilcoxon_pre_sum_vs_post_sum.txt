@@ -1,0 +1,19 @@
+============================================================
+PAIRED WILCOXON SIGNED-RANK TEST REPORT: PRE SUM VS POST SUM (1536 Features)
+============================================================
+Wilcoxon statistic: 2704.0000
+p-value:            1.8173e-01
+
+Delta (Pre - Post) Statistics:
+  - Median delta: +0.000628
+  - Mean delta:   +0.000574
+  - Std dev:      0.003980
+
+Win/Loss/Tie Counts:
+  - Pre Sum > Post Sum: 63
+  - Post Sum > Pre Sum: 49
+  - Ties:               0
+
+Interpretation:
+The difference is NOT statistically significant (p-value = 1.8173e-01 >= 0.05).
+There is insufficient evidence that Pre Sum outperforms Post Sum.

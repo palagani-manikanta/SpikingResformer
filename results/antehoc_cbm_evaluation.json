@@ -1,0 +1,24 @@
+{
+    "final_validation_accuracy": 2.168473728106756,
+    "bird_classification_top1_accuracy": 2.347255781843286,
+    "bird_classification_top5_accuracy": 9.613393165343458,
+    "f1_macro": 0.020212211312276553,
+    "f1_micro": 0.02347255781843286,
+    "average_per_class_accuracy": 2.357932935519142,
+    "before_calibration": {
+        "top1_acc": 1.88,
+        "top5_acc": 8.56,
+        "ece": 0.15191412632837611,
+        "mce": 0.2710325515546559,
+        "brier": 0.17480172034816518,
+        "nll": 0.536836899614215
+    },
+    "after_calibration": {
+        "top1_acc": 2.347255781843286,
+        "top5_acc": 9.613393165343458,
+        "ece": 0.00206171893922364,
+        "mce": 0.017406035752155047,
+        "brier": 0.1280476830736453,
+        "nll": 0.4091955868397783
+    }
+}
