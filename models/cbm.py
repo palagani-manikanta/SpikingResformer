@@ -152,6 +152,7 @@ class SpikingResformerCBM(nn.Module):
         target_layer_key: str = "layers.2.6.down.0",
         lambda_concept: float = 1.0,
         lambda_task: float    = 1.0,
+        concept_dropout: float = 0.0,
     ):
         super().__init__()
 
@@ -161,6 +162,7 @@ class SpikingResformerCBM(nn.Module):
         self.readout_type   = readout_type
         self.lambda_concept = lambda_concept
         self.lambda_task    = lambda_task
+        self.concept_dropout = concept_dropout
 
         # ---- Backbone (frozen) -----------------------------------------------
         self.backbone = backbone
@@ -205,12 +207,19 @@ class SpikingResformerCBM(nn.Module):
             return _pool_temporal_mean(lif._spike_seq)
 
     # ---- Forward -------------------------------------------------------------
-    def forward(self, x: torch.Tensor):
+    def forward(self, x: torch.Tensor, concept_targets: torch.Tensor = None,
+                concept_dropout_rate: float = 0.0):
         """
         Args:
-            x : [B, C, H, W] image batch (NOT time-expanded — backbone handles that)
+            x                    : [B, C, H, W] image batch (NOT time-expanded)
+            concept_targets      : [B, n_concepts] ground-truth binary concepts (optional,
+                                   used during training for concept dropout / mixing)
+            concept_dropout_rate : float in [0,1], fraction of concepts to replace with
+                                   ground-truth during training (0 = standard forward,
+                                   1 = head sees all ground-truth). Only active when
+                                   concept_targets is provided AND model is in train mode.
         Returns:
-            concept_scores : [B, n_concepts]  (Sigmoid probabilities)
+            concept_scores : [B, n_concepts]  (Sigmoid probabilities fed to head)
             class_logits   : [B, n_classes]
         """
         # Backbone forward (fills hook buffers, backbone itself is frozen)
@@ -220,6 +229,21 @@ class SpikingResformerCBM(nn.Module):
 
         feats          = self._get_features()      # [B, backbone_dim]
         concept_scores = self.cbl(feats)           # [B, n_concepts]
+
+        # --- Concept Dropout (fixes intervention collapse) ---
+        # During training, randomly replace some CBL-predicted concepts with
+        # ground-truth so the classification head learns to handle BOTH noisy
+        # predictions AND clean ground-truth inputs. Without this, the head
+        # overfits to CBL's noise distribution and collapses when intervention
+        # provides perfect {0,1} values at test time.
+        if self.training and concept_targets is not None and concept_dropout_rate > 0:
+            B, C = concept_scores.shape
+            # Per-concept random mask: True = replace with ground-truth
+            mask = torch.bernoulli(torch.full((B, C), concept_dropout_rate,
+                                              device=concept_scores.device)).bool()
+            # Blend: replaced concepts get ground-truth {0,1}, rest keep CBL prediction
+            concept_scores = torch.where(mask, concept_targets.float(), concept_scores)
+
         class_logits   = self.head(concept_scores) # [B, n_classes]
         return concept_scores, class_logits
 
@@ -264,6 +288,7 @@ class SpikingResformerCBM(nn.Module):
         print(f"  Readout type        : {self.readout_type}")
         print(f"  Lambda concept      : {self.lambda_concept}")
         print(f"  Lambda task         : {self.lambda_task}")
+        print(f"  Concept dropout     : {self.concept_dropout}")
         print(f"  Backbone params     : {bb_params:,}  [FROZEN]")
         if self.decoder is not None:
             print(f"  Decoder params      : {decoder_params:,}  [trainable]")

@@ -28,17 +28,22 @@ from timm.models import create_model
 import models.spikingresformer          # noqa: registers timm models
 from models.cbm import SpikingResformerCBM
 
-# ---- Paths -------------------------------------------------------------------
-CKPT_PATH  = r"C:\Users\palag\New folder\SpikingResformer\checkpoints\SpikingResformer-checkpoints\spikingresformer_ti.pth"
+# ---- Paths (configurable via environment variables) --------------------------
+REPO_ROOT = os.path.dirname(__file__)
+CKPT_PATH  = os.environ.get("SPIKING_RESFORMER_CKPT",
+              os.path.join(REPO_ROOT, "checkpoints", "SpikingResformer-checkpoints",
+                           "spikingresformer_ti.pth"))
 MODEL_NAME = "spikingresformer_ti"
-CUB_DIR    = r"C:\Users\palag\New folder\SpikingResformer\datasets\CUB_200_2011"
+CUB_DIR    = os.environ.get("CUB_DATA_DIR",
+              os.path.join(REPO_ROOT, "datasets", "CUB_200_2011"))
 CSV_PATH   = os.path.join(CUB_DIR, "processed_attributes.csv")
 IMAGES_DIR = os.path.join(CUB_DIR, "images")
 
-OUTPUT_DIR    = os.path.join(os.path.dirname(__file__), "evaluation_results")
+OUTPUT_DIR    = os.path.join(REPO_ROOT, "evaluation_results")
 GATE_JSON     = os.path.join(OUTPUT_DIR, "gate_result.json")
-CBM_CKPT_DIR  = os.path.join(os.path.dirname(__file__), "cbm_checkpoints")
+CBM_CKPT_DIR  = os.path.join(REPO_ROOT, "cbm_checkpoints")
 REPORT_PATH   = os.path.join(OUTPUT_DIR, "cbm_training_report.md")
+SPLIT_JSON    = os.path.join(OUTPUT_DIR, "train_calib_split.json")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(CBM_CKPT_DIR, exist_ok=True)
@@ -79,11 +84,19 @@ class CUBConceptDataset(Dataset):
         return img, attrs, class_id
 
 
-# ---- Cosine LR Schedule ------------------------------------------------------
-def cosine_lr_schedule(optimizer, epoch, n_epochs, lr_min=1e-6, lr_max=None):
+# ---- Cosine LR Schedule with Warmup -----------------------------------------
+def cosine_lr_schedule(optimizer, epoch, n_epochs, lr_min=1e-6, lr_max=None,
+                       warmup_epochs=5):
     if lr_max is None:
         lr_max = optimizer.defaults["lr"]
-    lr = lr_min + 0.5 * (lr_max - lr_min) * (1 + np.cos(np.pi * epoch / n_epochs))
+    if epoch < warmup_epochs:
+        # Linear warmup from 0 to lr_max
+        lr = lr_max * (epoch + 1) / warmup_epochs
+    else:
+        # Cosine annealing after warmup
+        adjusted_epoch = epoch - warmup_epochs
+        adjusted_total = n_epochs - warmup_epochs
+        lr = lr_min + 0.5 * (lr_max - lr_min) * (1 + np.cos(np.pi * adjusted_epoch / adjusted_total))
     for pg in optimizer.param_groups:
         pg["lr"] = lr
     return lr
@@ -170,6 +183,41 @@ def main(args):
     with open(CSV_PATH, "r", encoding="utf-8") as f:
         all_rows = list(csv.DictReader(f))
 
+    # ---- 4-way split: train / calibration / val(test) -----------------------
+    # Carve a calibration split from the ORIGINAL train set BEFORE training,
+    # so calibration data is never seen by the CBL/head during training.
+    # This fixes the leakage caveat documented in calibration_ece.py.
+    CALIB_FRACTION = args.calib_fraction  # default 0.15
+    SPLIT_SEED = 20260826
+
+    train_rows_full = [r for r in all_rows if r["split"] == "train"]
+    test_rows       = [r for r in all_rows if r["split"] == "test"]
+
+    rng_split = np.random.default_rng(SPLIT_SEED)
+    idx_perm  = rng_split.permutation(len(train_rows_full))
+    n_calib   = int(len(train_rows_full) * CALIB_FRACTION)
+    calib_idx = idx_perm[:n_calib]
+    train_idx = idx_perm[n_calib:]
+
+    train_rows      = [train_rows_full[i] for i in train_idx]
+    calib_rows      = [train_rows_full[i] for i in calib_idx]
+
+    # Save split for reproducibility (calibration scripts read this)
+    with open(SPLIT_JSON, "w", encoding="utf-8") as f:
+        json.dump({
+            "note": "4-way split: train/calibration carved from original train, "
+                     "test is the original test. Calibration data is NEVER seen "
+                     "during CBL/head training.",
+            "split_seed": SPLIT_SEED,
+            "calib_fraction": CALIB_FRACTION,
+            "n_original_train": len(train_rows_full),
+            "n_train": len(train_rows),
+            "n_calib": len(calib_rows),
+            "n_test": len(test_rows),
+            "calib_image_paths": [r["image_path"] for r in calib_rows],
+            "train_image_paths": [r["image_path"] for r in train_rows],
+        }, f, indent=2)
+
     train_transform = transforms.Compose([
         transforms.RandomResizedCrop(224, scale=(0.7, 1.0)),
         transforms.RandomHorizontalFlip(),
@@ -183,11 +231,13 @@ def main(args):
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
 
-    train_ds = CUBConceptDataset(all_rows, IMAGES_DIR, train_transform, split_filter="train")
-    val_ds   = CUBConceptDataset(all_rows, IMAGES_DIR, val_transform,   split_filter="test")
+    train_ds = CUBConceptDataset(train_rows, IMAGES_DIR, train_transform, split_filter=None)
+    val_ds   = CUBConceptDataset(all_rows,   IMAGES_DIR, val_transform,   split_filter="test")
 
     n_concepts_actual = len(train_ds.attr_keys)
-    print(f"[Train] Train: {len(train_ds)}  Val: {len(val_ds)}  Concepts: {n_concepts_actual}")
+    print(f"[Train] Train: {len(train_ds)}  Calibration: {len(calib_rows)}  "
+          f"Val: {len(val_ds)}  Concepts: {n_concepts_actual}")
+    print(f"[Split] 4-way split saved: {SPLIT_JSON}")
 
     # ---- Build CBM -----------------------------------------------------------
     cbm = SpikingResformerCBM(
@@ -198,6 +248,7 @@ def main(args):
         backbone_dim   = 1536,
         lambda_concept = args.lambda_concept,
         lambda_task    = args.lambda_task,
+        concept_dropout = args.concept_dropout,
     ).to(DEVICE)
     cbm.summary()
 
@@ -213,7 +264,8 @@ def main(args):
         imgs  = imgs.to(DEVICE)
         attrs = attrs.to(DEVICE)
         cids  = cids.to(DEVICE)
-        cs, cl = cbm(imgs)
+        cs, cl = cbm(imgs, concept_targets=attrs,
+                     concept_dropout_rate=args.concept_dropout)
 
         loss, lc, lt = cbm.compute_loss(cs, cl, attrs, cids)
         print(f"[DryRun] concept_scores: {cs.shape}  class_logits: {cl.shape}")
@@ -258,7 +310,8 @@ def main(args):
         # Backbone must stay in eval (frozen BN statistics)
         cbm.backbone.eval()
 
-        lr = cosine_lr_schedule(optimizer, epoch - 1, args.epochs, lr_max=args.lr)
+        lr = cosine_lr_schedule(optimizer, epoch - 1, args.epochs, lr_max=args.lr,
+                               warmup_epochs=args.warmup_epochs)
         epoch_losses = []
 
         for batch_idx, (imgs, attrs, class_ids) in enumerate(train_loader):
@@ -267,7 +320,8 @@ def main(args):
             class_ids = class_ids.to(DEVICE)
 
             optimizer.zero_grad()
-            cs, cl = cbm(imgs)
+            cs, cl = cbm(imgs, concept_targets=attrs,
+                         concept_dropout_rate=args.concept_dropout)
             loss, lc, lt = cbm.compute_loss(cs, cl, attrs, class_ids)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(cbm.trainable_parameters(), max_norm=5.0)
@@ -391,6 +445,7 @@ def main(args):
 | Weight decay | {args.wd} |
 | lambda_concept | {args.lambda_concept} |
 | lambda_task | {args.lambda_task} |
+| concept_dropout | {args.concept_dropout} |
 | Device | {DEVICE.upper()} |
 | Training time | {total_time/60:.1f} min |
 
@@ -449,7 +504,9 @@ if __name__ == "__main__":
                         choices=["pre_reset_vmem", "post_reset_vmem", "spike_rate",
                                  "learned_decoder", None],
                         help="Override readout type (default: read from gate_result.json)")
-    parser.add_argument("--epochs",         type=int,   default=30)
+    parser.add_argument("--epochs",         type=int,   default=50)
+    parser.add_argument("--warmup-epochs",  type=int,   default=5,
+                        help="Linear warmup epochs before cosine annealing")
     parser.add_argument("--batch-size",     type=int,   default=32)
     parser.add_argument("--lr",             type=float, default=1e-3)
     parser.add_argument("--wd",             type=float, default=1e-4)
@@ -457,6 +514,15 @@ if __name__ == "__main__":
                         help="Weight for concept BCE loss")
     parser.add_argument("--lambda-task",    type=float, default=1.0,
                         help="Weight for classification CE loss")
+    parser.add_argument("--concept-dropout", type=float, default=0.0,
+                        help="Fraction of concepts replaced with ground-truth during "
+                             "training (fixes intervention collapse). 0=no dropout, "
+                             "0.3=30%% of concepts use ground-truth each batch.")
+    parser.add_argument("--calib-fraction", type=float, default=0.15,
+                        help="Fraction of original train set carved out for calibration "
+                             "(default 0.15). Saved to train_calib_split.json for "
+                             "reproducibility. Calibration data is never seen during "
+                             "CBL/head training.")
     parser.add_argument("--dry-run",        action="store_true",
                         help="Run a single batch to verify setup, then exit")
     args = parser.parse_args()

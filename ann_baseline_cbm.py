@@ -50,9 +50,10 @@ os.makedirs(CKPT_DIR, exist_ok=True)
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Identical hyperparameters to train_cbm.py's defaults, so the comparison is fair.
-EPOCHS, BATCH_SIZE, LR, WD = 30, 32, 1e-3, 1e-4
+EPOCHS, BATCH_SIZE, LR, WD = 50, 32, 1e-3, 1e-4
 LAMBDA_CONCEPT, LAMBDA_TASK = 1.0, 1.0
 BACKBONE_DIM = 512   # ResNet-18's pooled feature dim
+WARMUP_EPOCHS = 5
 
 
 class ANNResNetCBM(nn.Module):
@@ -63,7 +64,8 @@ class ANNResNetCBM(nn.Module):
     works unmodified on this class too."""
 
     def __init__(self, n_concepts=112, n_classes=200,
-                 lambda_concept=LAMBDA_CONCEPT, lambda_task=LAMBDA_TASK):
+                 lambda_concept=LAMBDA_CONCEPT, lambda_task=LAMBDA_TASK,
+                 concept_dropout=0.0):
         super().__init__()
         weights = torchvision.models.ResNet18_Weights.IMAGENET1K_V1
         backbone = torchvision.models.resnet18(weights=weights)
@@ -75,14 +77,24 @@ class ANNResNetCBM(nn.Module):
 
         self.lambda_concept = lambda_concept
         self.lambda_task = lambda_task
+        self.concept_dropout = concept_dropout
         self.decoder = None  # unused; kept so any code checking `.decoder is None` still works
         self.cbl  = ConceptBottleneckLayer(BACKBONE_DIM, n_concepts)
         self.head = ClassificationHead(n_concepts, n_classes)
 
-    def forward(self, x: torch.Tensor):
+    def forward(self, x: torch.Tensor, concept_targets: torch.Tensor = None,
+                concept_dropout_rate: float = 0.0):
         with torch.no_grad():
             feats = self.backbone(x)          # [B, 512], backbone frozen+eval, same as the spiking run
         concept_scores = self.cbl(feats)
+
+        # Concept Dropout (same as SpikingResformerCBM)
+        if self.training and concept_targets is not None and concept_dropout_rate > 0:
+            B, C = concept_scores.shape
+            mask = torch.bernoulli(torch.full((B, C), concept_dropout_rate,
+                                              device=concept_scores.device)).bool()
+            concept_scores = torch.where(mask, concept_targets.float(), concept_scores)
+
         class_logits = self.head(concept_scores)
         return concept_scores, class_logits
 
@@ -140,7 +152,7 @@ def main():
     print(f"[Data] Train: {len(train_ds)}  Val: {len(val_ds)}  Concepts: {n_concepts}  "
           f"(identical split to the spiking run)")
 
-    model = ANNResNetCBM(n_concepts=n_concepts, n_classes=200).to(DEVICE)
+    model = ANNResNetCBM(n_concepts=n_concepts, n_classes=200, concept_dropout=0.3).to(DEVICE)
     model.summary()
 
     train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True,  num_workers=0, drop_last=True)
@@ -166,12 +178,14 @@ def main():
     for epoch in range(1, EPOCHS + 1):
         model.train()
         model.backbone.eval()   # frozen BN stats, same discipline as the spiking run
-        lr = cosine_lr_schedule(optimizer, epoch - 1, EPOCHS, lr_max=LR)
+        lr = cosine_lr_schedule(optimizer, epoch - 1, EPOCHS, lr_max=LR,
+                               warmup_epochs=WARMUP_EPOCHS)
         epoch_losses = []
         for batch_idx, (imgs, attrs, class_ids) in enumerate(train_loader):
             imgs, attrs, class_ids = imgs.to(DEVICE), attrs.to(DEVICE), class_ids.to(DEVICE)
             optimizer.zero_grad()
-            cs, cl = model(imgs)
+            cs, cl = model(imgs, concept_targets=attrs,
+                           concept_dropout_rate=model.concept_dropout)
             loss, lc, lt = model.compute_loss(cs, cl, attrs, class_ids)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.trainable_parameters(), max_norm=5.0)
