@@ -1,0 +1,179 @@
+
+[Seed 0] ResNet-34 + MLP, 50 epochs, live augmentation
+  seed 0 ep  1/50 | 41s (backbone 40s) | shuf loss 5.275 val 10.57%/0.8827*acc*auc | elapsed 0.01 h | ETA seed 0.56 h, all 1.71 h
+  seed 0 ep  2/50 | 38s (backbone 37s) | shuf loss 4.303 val 21.13%/0.8912*acc*auc | elapsed 0.02 h | ETA seed 0.53 h, all 1.62 h
+  seed 0 ep  3/50 | 44s (backbone 43s) | shuf loss 3.587 val 28.14%/0.8971*acc*auc | elapsed 0.03 h | ETA seed 0.54 h, all 1.68 h
+  seed 0 ep  4/50 | 46s (backbone 45s) | shuf loss 3.052 val 35.48%/0.8974*acc*auc | elapsed 0.05 h | ETA seed 0.54 h, all 1.71 h
+  seed 0 ep  5/50 | 38s (backbone 37s) | shuf loss 2.653 val 40.71%/0.8961*acc | elapsed 0.06 h | ETA seed 0.52 h, all 1.67 h
+  seed 0 ep  6/50 | 38s (backbone 37s) | shuf loss 2.321 val 40.16%/0.8962 | elapsed 0.07 h | ETA seed 0.50 h, all 1.63 h
+  seed 0 ep  7/50 | 38s (backbone 37s) | shuf loss 2.053 val 46.50%/0.8993*acc*auc | elapsed 0.08 h | ETA seed 0.48 h, all 1.60 h
+  seed 0 ep  8/50 | 38s (backbone 37s) | shuf loss 1.834 val 48.16%/0.9060*acc*auc | elapsed 0.09 h | ETA seed 0.47 h, all 1.58 h
+  seed 0 ep  9/50 | 38s (backbone 37s) | shuf loss 1.658 val 49.61%/0.9057*acc | elapsed 0.10 h | ETA seed 0.45 h, all 1.56 h
+  seed 0 ep 10/50 | 39s (backbone 38s) | shuf loss 1.501 val 50.61%/0.9037*acc | elapsed 0.11 h | ETA seed 0.44 h, all 1.55 h
+  seed 0 ep 11/50 | 39s (backbone 38s) | shuf loss 1.371 val 51.84%/0.9100*acc*auc | elapsed 0.12 h | ETA seed 0.43 h, all 1.53 h
+  seed 0 ep 12/50 | 40s (backbone 39s) | shuf loss 1.252 val 51.28%/0.9097 | elapsed 0.13 h | ETA seed 0.42 h, all 1.52 h
+  seed 0 ep 13/50 | 39s (backbone 39s) | shuf loss 1.151 val 54.28%/0.9129*acc*auc | elapsed 0.14 h | ETA seed 0.41 h, all 1.51 h
+  seed 0 ep 14/50 | 39s (backbone 38s) | shuf loss 1.084 val 52.50%/0.9123 | elapsed 0.15 h | ETA seed 0.40 h, all 1.49 h
+  seed 0 ep 15/50 | 39s (backbone 38s) | shuf loss 0.982 val 54.62%/0.9119*acc | elapsed 0.16 h | ETA seed 0.38 h, all 1.48 h
+  seed 0 ep 16/50 | 40s (backbone 39s) | shuf loss 0.935 val 54.06%/0.9185*auc | elapsed 0.18 h | ETA seed 0.37 h, all 1.47 h
+  seed 0 ep 17/50 | 41s (backbone 40s) | shuf loss 0.851 val 54.51%/0.9157 | elapsed 0.19 h | ETA seed 0.36 h, all 1.46 h
+  seed 0 ep 18/50 | 43s (backbone 42s) | shuf loss 0.792 val 56.17%/0.9189*acc*auc | elapsed 0.20 h | ETA seed 0.35 h, all 1.46 h
+  seed 0 ep 19/50 | 42s (backbone 41s) | shuf loss 0.747 val 55.39%/0.9168 | elapsed 0.21 h | ETA seed 0.34 h, all 1.45 h
+  seed 0 ep 20/50 | 42s (backbone 41s) | shuf loss 0.696 val 55.51%/0.9195*auc | elapsed 0.22 h | ETA seed 0.33 h, all 1.44 h
+  seed 0 ep 21/50 | 41s (backbone 40s) | shuf loss 0.666 val 53.84%/0.9151 | elapsed 0.23 h | ETA seed 0.32 h, all 1.44 h
+  seed 0 ep 22/50 | 40s (backbone 40s) | shuf loss 0.627 val 55.17%/0.9187 | elapsed 0.24 h | ETA seed 0.31 h, all 1.42 h
+  seed 0 ep 23/50 | 40s (backbone 39s) | shuf loss 0.580 val 54.28%/0.9201*auc | elapsed 0.26 h | ETA seed 0.30 h, all 1.41 h
+  seed 0 ep 24/50 | 41s (backbone 40s) | shuf loss 0.544 val 55.06%/0.9206*auc | elapsed 0.27 h | ETA seed 0.29 h, all 1.40 h
+  seed 0 ep 25/50 | 42s (backbone 41s) | shuf loss 0.523 val 53.28%/0.9181 | elapsed 0.28 h | ETA seed 0.28 h, all 1.39 h
+  seed 0 ep 26/50 | 42s (backbone 41s) | shuf loss 0.492 val 54.95%/0.9220*auc | elapsed 0.29 h | ETA seed 0.27 h, all 1.39 h
+  seed 0 ep 27/50 | 39s (backbone 38s) | shuf loss 0.472 val 53.84%/0.9226*auc | elapsed 0.30 h | ETA seed 0.26 h, all 1.37 h
+  seed 0 ep 28/50 | 38s (backbone 38s) | shuf loss 0.447 val 54.73%/0.9226*auc | elapsed 0.31 h | ETA seed 0.25 h, all 1.36 h
+  seed 0 ep 29/50 | 39s (backbone 38s) | shuf loss 0.437 val 55.06%/0.9242*auc | elapsed 0.32 h | ETA seed 0.23 h, all 1.35 h
+  seed 0 ep 30/50 | 39s (backbone 38s) | shuf loss 0.417 val 55.17%/0.9258*auc | elapsed 0.33 h | ETA seed 0.22 h, all 1.33 h
+  seed 0 ep 31/50 | 38s (backbone 38s) | shuf loss 0.401 val 53.73%/0.9258*auc | elapsed 0.34 h | ETA seed 0.21 h, all 1.32 h
+  seed 0 ep 32/50 | 39s (backbone 38s) | shuf loss 0.372 val 55.17%/0.9261*auc | elapsed 0.36 h | ETA seed 0.20 h, all 1.31 h
+  seed 0 ep 33/50 | 39s (backbone 38s) | shuf loss 0.365 val 54.51%/0.9251 | elapsed 0.37 h | ETA seed 0.19 h, all 1.30 h
+  seed 0 ep 34/50 | 40s (backbone 39s) | shuf loss 0.350 val 54.62%/0.9267*auc | elapsed 0.38 h | ETA seed 0.18 h, all 1.29 h
+  seed 0 ep 35/50 | 40s (backbone 39s) | shuf loss 0.339 val 54.95%/0.9269*auc | elapsed 0.39 h | ETA seed 0.17 h, all 1.28 h
+  seed 0 ep 36/50 | 39s (backbone 38s) | shuf loss 0.327 val 55.39%/0.9275*auc | elapsed 0.40 h | ETA seed 0.16 h, all 1.26 h
+  seed 0 ep 37/50 | 38s (backbone 37s) | shuf loss 0.319 val 55.06%/0.9271 | elapsed 0.41 h | ETA seed 0.14 h, all 1.25 h
+  seed 0 ep 38/50 | 38s (backbone 38s) | shuf loss 0.309 val 54.62%/0.9274 | elapsed 0.42 h | ETA seed 0.13 h, all 1.24 h
+  seed 0 ep 39/50 | 38s (backbone 38s) | shuf loss 0.304 val 55.73%/0.9279*auc | elapsed 0.43 h | ETA seed 0.12 h, all 1.23 h
+  seed 0 ep 40/50 | 39s (backbone 38s) | shuf loss 0.295 val 55.06%/0.9290*auc | elapsed 0.44 h | ETA seed 0.11 h, all 1.21 h
+  seed 0 ep 41/50 | 39s (backbone 38s) | shuf loss 0.293 val 55.28%/0.9275 | elapsed 0.45 h | ETA seed 0.10 h, all 1.20 h
+  seed 0 ep 42/50 | 39s (backbone 38s) | shuf loss 0.294 val 54.51%/0.9286 | elapsed 0.46 h | ETA seed 0.09 h, all 1.19 h
+  seed 0 ep 43/50 | 39s (backbone 38s) | shuf loss 0.283 val 54.28%/0.9282 | elapsed 0.47 h | ETA seed 0.08 h, all 1.18 h
+  seed 0 ep 44/50 | 39s (backbone 38s) | shuf loss 0.282 val 54.17%/0.9291*auc | elapsed 0.48 h | ETA seed 0.07 h, all 1.17 h
+  seed 0 ep 45/50 | 39s (backbone 38s) | shuf loss 0.281 val 55.39%/0.9293*auc | elapsed 0.50 h | ETA seed 0.06 h, all 1.16 h
+  seed 0 ep 46/50 | 39s (backbone 38s) | shuf loss 0.277 val 55.51%/0.9293*auc | elapsed 0.51 h | ETA seed 0.04 h, all 1.15 h
+  seed 0 ep 47/50 | 39s (backbone 38s) | shuf loss 0.271 val 54.95%/0.9295*auc | elapsed 0.52 h | ETA seed 0.03 h, all 1.13 h
+  seed 0 ep 48/50 | 39s (backbone 38s) | shuf loss 0.270 val 55.73%/0.9296*auc | elapsed 0.53 h | ETA seed 0.02 h, all 1.12 h
+  seed 0 ep 49/50 | 38s (backbone 37s) | shuf loss 0.273 val 55.28%/0.9296*auc | elapsed 0.54 h | ETA seed 0.01 h, all 1.11 h
+  seed 0 ep 50/50 | 39s (backbone 38s) | shuf loss 0.269 val 55.39%/0.9296*auc | elapsed 0.55 h | ETA seed 0.00 h, all 1.10 h
+  [Done] ResNet-34 + MLP (live aug.) seed 0 [ClassAcc-selected]: epoch 18 -> test acc 56.01%  AUC 0.9222  ECE 0.0999
+  [Done] ResNet-34 + MLP (live aug.) seed 0 [AUC-selected]: epoch 50 -> test acc 59.96%  AUC 0.9343  ECE 0.0606
+[Seed 0] done: [RAM] this process: peak working set 1.64 GiB (now 1.59, peak private 3.56) | machine: 1.9 of 15.3 GiB free
+
+[Seed 1] ResNet-34 + MLP, 50 epochs, live augmentation
+  seed 1 ep  1/50 | 39s (backbone 38s) | shuf loss 5.269 val 7.34%/0.8804*acc*auc | elapsed 0.56 h | ETA seed 0.53 h, all 1.07 h
+  seed 1 ep  2/50 | 42s (backbone 41s) | shuf loss 4.299 val 21.47%/0.8887*acc*auc | elapsed 0.57 h | ETA seed 0.54 h, all 1.10 h
+  seed 1 ep  3/50 | 40s (backbone 39s) | shuf loss 3.579 val 32.04%/0.8963*acc*auc | elapsed 0.58 h | ETA seed 0.53 h, all 1.09 h
+  seed 1 ep  4/50 | 39s (backbone 38s) | shuf loss 3.048 val 33.37%/0.8932*acc | elapsed 0.59 h | ETA seed 0.51 h, all 1.07 h
+  seed 1 ep  5/50 | 39s (backbone 38s) | shuf loss 2.642 val 37.49%/0.8926*acc | elapsed 0.61 h | ETA seed 0.50 h, all 1.05 h
+  seed 1 ep  6/50 | 40s (backbone 39s) | shuf loss 2.319 val 40.16%/0.9005*acc*auc | elapsed 0.62 h | ETA seed 0.49 h, all 1.04 h
+  seed 1 ep  7/50 | 39s (backbone 38s) | shuf loss 2.062 val 44.49%/0.9000*acc | elapsed 0.63 h | ETA seed 0.47 h, all 1.03 h
+  seed 1 ep  8/50 | 39s (backbone 39s) | shuf loss 1.841 val 47.27%/0.8976*acc | elapsed 0.64 h | ETA seed 0.46 h, all 1.01 h
+  seed 1 ep  9/50 | 39s (backbone 39s) | shuf loss 1.658 val 48.28%/0.9030*acc*auc | elapsed 0.65 h | ETA seed 0.45 h, all 1.00 h
+  seed 1 ep 10/50 | 39s (backbone 38s) | shuf loss 1.502 val 51.28%/0.9057*acc*auc | elapsed 0.66 h | ETA seed 0.44 h, all 0.99 h
+  seed 1 ep 11/50 | 39s (backbone 38s) | shuf loss 1.371 val 50.39%/0.9111*auc | elapsed 0.67 h | ETA seed 0.43 h, all 0.98 h
+  seed 1 ep 12/50 | 39s (backbone 38s) | shuf loss 1.270 val 52.61%/0.9117*acc*auc | elapsed 0.68 h | ETA seed 0.42 h, all 0.97 h
+  seed 1 ep 13/50 | 42s (backbone 42s) | shuf loss 1.156 val 51.39%/0.9105 | elapsed 0.69 h | ETA seed 0.41 h, all 0.96 h
+  seed 1 ep 14/50 | 41s (backbone 40s) | shuf loss 1.076 val 54.06%/0.9113*acc | elapsed 0.70 h | ETA seed 0.40 h, all 0.95 h
+  seed 1 ep 15/50 | 39s (backbone 39s) | shuf loss 0.988 val 53.39%/0.9120*auc | elapsed 0.72 h | ETA seed 0.39 h, all 0.94 h
+  seed 1 ep 16/50 | 40s (backbone 39s) | shuf loss 0.907 val 53.28%/0.9135*auc | elapsed 0.73 h | ETA seed 0.38 h, all 0.93 h
+  seed 1 ep 17/50 | 39s (backbone 38s) | shuf loss 0.859 val 54.62%/0.9170*acc*auc | elapsed 0.74 h | ETA seed 0.36 h, all 0.92 h
+  seed 1 ep 18/50 | 39s (backbone 39s) | shuf loss 0.792 val 53.17%/0.9113 | elapsed 0.75 h | ETA seed 0.35 h, all 0.90 h
+  seed 1 ep 19/50 | 39s (backbone 39s) | shuf loss 0.739 val 54.84%/0.9143*acc | elapsed 0.76 h | ETA seed 0.34 h, all 0.89 h
+  seed 1 ep 20/50 | 39s (backbone 39s) | shuf loss 0.700 val 56.62%/0.9181*acc*auc | elapsed 0.77 h | ETA seed 0.33 h, all 0.88 h
+  seed 1 ep 21/50 | 39s (backbone 38s) | shuf loss 0.649 val 53.95%/0.9186*auc | elapsed 0.78 h | ETA seed 0.32 h, all 0.87 h
+  seed 1 ep 22/50 | 39s (backbone 39s) | shuf loss 0.609 val 53.84%/0.9166 | elapsed 0.79 h | ETA seed 0.31 h, all 0.86 h
+  seed 1 ep 23/50 | 39s (backbone 39s) | shuf loss 0.579 val 54.73%/0.9176 | elapsed 0.80 h | ETA seed 0.30 h, all 0.85 h
+  seed 1 ep 24/50 | 39s (backbone 39s) | shuf loss 0.543 val 55.06%/0.9162 | elapsed 0.81 h | ETA seed 0.29 h, all 0.84 h
+  seed 1 ep 25/50 | 39s (backbone 38s) | shuf loss 0.512 val 54.39%/0.9191*auc | elapsed 0.82 h | ETA seed 0.27 h, all 0.82 h
+  seed 1 ep 26/50 | 39s (backbone 38s) | shuf loss 0.480 val 54.28%/0.9248*auc | elapsed 0.84 h | ETA seed 0.26 h, all 0.81 h
+  seed 1 ep 27/50 | 39s (backbone 38s) | shuf loss 0.462 val 54.17%/0.9196 | elapsed 0.85 h | ETA seed 0.25 h, all 0.80 h
+  seed 1 ep 28/50 | 39s (backbone 39s) | shuf loss 0.437 val 55.06%/0.9204 | elapsed 0.86 h | ETA seed 0.24 h, all 0.79 h
+  seed 1 ep 29/50 | 39s (backbone 38s) | shuf loss 0.419 val 56.28%/0.9222 | elapsed 0.87 h | ETA seed 0.23 h, all 0.78 h
+  seed 1 ep 30/50 | 39s (backbone 38s) | shuf loss 0.399 val 55.39%/0.9210 | elapsed 0.88 h | ETA seed 0.22 h, all 0.77 h
+  seed 1 ep 31/50 | 39s (backbone 38s) | shuf loss 0.379 val 56.06%/0.9260*auc | elapsed 0.89 h | ETA seed 0.21 h, all 0.76 h
+  seed 1 ep 32/50 | 39s (backbone 38s) | shuf loss 0.369 val 55.84%/0.9245 | elapsed 0.90 h | ETA seed 0.20 h, all 0.75 h
+  seed 1 ep 33/50 | 39s (backbone 38s) | shuf loss 0.355 val 55.84%/0.9259 | elapsed 0.91 h | ETA seed 0.19 h, all 0.73 h
+  seed 1 ep 34/50 | 39s (backbone 38s) | shuf loss 0.345 val 56.84%/0.9256*acc | elapsed 0.92 h | ETA seed 0.18 h, all 0.72 h
+  seed 1 ep 35/50 | 39s (backbone 38s) | shuf loss 0.330 val 55.84%/0.9243 | elapsed 0.93 h | ETA seed 0.16 h, all 0.71 h
+  seed 1 ep 36/50 | 39s (backbone 38s) | shuf loss 0.323 val 55.95%/0.9268*auc | elapsed 0.94 h | ETA seed 0.15 h, all 0.70 h
+  seed 1 ep 37/50 | 39s (backbone 38s) | shuf loss 0.306 val 55.84%/0.9273*auc | elapsed 0.95 h | ETA seed 0.14 h, all 0.69 h
+  seed 1 ep 38/50 | 40s (backbone 39s) | shuf loss 0.302 val 57.06%/0.9278*acc*auc | elapsed 0.97 h | ETA seed 0.13 h, all 0.68 h
+  seed 1 ep 39/50 | 39s (backbone 38s) | shuf loss 0.291 val 56.95%/0.9268 | elapsed 0.98 h | ETA seed 0.12 h, all 0.67 h
+  seed 1 ep 40/50 | 39s (backbone 38s) | shuf loss 0.285 val 56.51%/0.9276 | elapsed 0.99 h | ETA seed 0.11 h, all 0.66 h
+  seed 1 ep 41/50 | 39s (backbone 38s) | shuf loss 0.285 val 55.73%/0.9269 | elapsed 1.00 h | ETA seed 0.10 h, all 0.65 h
+  seed 1 ep 42/50 | 39s (backbone 38s) | shuf loss 0.275 val 55.51%/0.9264 | elapsed 1.01 h | ETA seed 0.09 h, all 0.63 h
+  seed 1 ep 43/50 | 39s (backbone 38s) | shuf loss 0.273 val 56.28%/0.9280*auc | elapsed 1.02 h | ETA seed 0.08 h, all 0.62 h
+  seed 1 ep 44/50 | 39s (backbone 38s) | shuf loss 0.271 val 56.28%/0.9281*auc | elapsed 1.03 h | ETA seed 0.07 h, all 0.61 h
+  seed 1 ep 45/50 | 39s (backbone 38s) | shuf loss 0.265 val 56.17%/0.9275 | elapsed 1.04 h | ETA seed 0.05 h, all 0.60 h
+  seed 1 ep 46/50 | 39s (backbone 38s) | shuf loss 0.261 val 56.40%/0.9274 | elapsed 1.05 h | ETA seed 0.04 h, all 0.59 h
+  seed 1 ep 47/50 | 39s (backbone 38s) | shuf loss 0.261 val 55.84%/0.9275 | elapsed 1.06 h | ETA seed 0.03 h, all 0.58 h
+  seed 1 ep 48/50 | 39s (backbone 39s) | shuf loss 0.261 val 56.06%/0.9275 | elapsed 1.07 h | ETA seed 0.02 h, all 0.57 h
+  seed 1 ep 49/50 | 39s (backbone 38s) | shuf loss 0.261 val 55.95%/0.9277 | elapsed 1.08 h | ETA seed 0.01 h, all 0.56 h
+  seed 1 ep 50/50 | 39s (backbone 38s) | shuf loss 0.260 val 56.06%/0.9277 | elapsed 1.10 h | ETA seed 0.00 h, all 0.55 h
+  [Done] ResNet-34 + MLP (live aug.) seed 1 [ClassAcc-selected]: epoch 38 -> test acc 58.73%  AUC 0.9328  ECE 0.0666
+  [Done] ResNet-34 + MLP (live aug.) seed 1 [AUC-selected]: epoch 44 -> test acc 58.80%  AUC 0.9337  ECE 0.0626
+[Seed 1] done: [RAM] this process: peak working set 1.96 GiB (now 1.55, peak private 3.91) | machine: 1.8 of 15.3 GiB free
+
+[Seed 2] ResNet-34 + MLP, 50 epochs, live augmentation
+  seed 2 ep  1/50 | 40s (backbone 39s) | shuf loss 5.275 val 9.01%/0.8817*acc*auc | elapsed 1.11 h | ETA seed 0.54 h, all 0.54 h
+  seed 2 ep  2/50 | 39s (backbone 39s) | shuf loss 4.306 val 19.47%/0.8891*acc*auc | elapsed 1.12 h | ETA seed 0.53 h, all 0.53 h
+  seed 2 ep  3/50 | 39s (backbone 38s) | shuf loss 3.585 val 27.47%/0.8913*acc*auc | elapsed 1.13 h | ETA seed 0.52 h, all 0.52 h
+  seed 2 ep  4/50 | 40s (backbone 39s) | shuf loss 3.058 val 36.48%/0.8957*acc*auc | elapsed 1.14 h | ETA seed 0.51 h, all 0.51 h
+  seed 2 ep  5/50 | 40s (backbone 39s) | shuf loss 2.649 val 39.60%/0.9003*acc*auc | elapsed 1.15 h | ETA seed 0.50 h, all 0.50 h
+  seed 2 ep  6/50 | 44s (backbone 43s) | shuf loss 2.308 val 41.60%/0.8958*acc | elapsed 1.16 h | ETA seed 0.49 h, all 0.49 h
+  seed 2 ep  7/50 | 2208s (backbone 2207s) | shuf loss 2.062 val 45.83%/0.8990*acc | elapsed 1.78 h | ETA seed 4.18 h, all 4.18 h
+  seed 2 ep  8/50 | 44s (backbone 43s) | shuf loss 1.831 val 45.61%/0.9033*auc | elapsed 1.79 h | ETA seed 3.64 h, all 3.64 h
+  seed 2 ep  9/50 | 50s (backbone 49s) | shuf loss 1.664 val 49.83%/0.9020*acc | elapsed 1.80 h | ETA seed 3.22 h, all 3.22 h
+  seed 2 ep 10/50 | 49s (backbone 48s) | shuf loss 1.501 val 50.83%/0.9030*acc | elapsed 1.82 h | ETA seed 2.88 h, all 2.88 h
+  seed 2 ep 11/50 | 48s (backbone 47s) | shuf loss 1.374 val 50.72%/0.9018 | elapsed 1.83 h | ETA seed 2.60 h, all 2.60 h
+  seed 2 ep 12/50 | 48s (backbone 47s) | shuf loss 1.278 val 50.83%/0.9018 | elapsed 1.84 h | ETA seed 2.37 h, all 2.37 h
+  seed 2 ep 13/50 | 48s (backbone 47s) | shuf loss 1.153 val 53.39%/0.9058*acc*auc | elapsed 1.86 h | ETA seed 2.16 h, all 2.16 h
+  seed 2 ep 14/50 | 49s (backbone 48s) | shuf loss 1.056 val 54.06%/0.9131*acc*auc | elapsed 1.87 h | ETA seed 1.99 h, all 1.99 h
+  seed 2 ep 15/50 | 48s (backbone 47s) | shuf loss 0.995 val 54.95%/0.9139*acc*auc | elapsed 1.88 h | ETA seed 1.84 h, all 1.84 h
+  seed 2 ep 16/50 | 49s (backbone 47s) | shuf loss 0.916 val 53.73%/0.9142*auc | elapsed 1.90 h | ETA seed 1.70 h, all 1.70 h
+  seed 2 ep 17/50 | 49s (backbone 48s) | shuf loss 0.860 val 54.39%/0.9094 | elapsed 1.91 h | ETA seed 1.58 h, all 1.58 h
+  seed 2 ep 18/50 | 48s (backbone 47s) | shuf loss 0.810 val 55.95%/0.9144*acc*auc | elapsed 1.92 h | ETA seed 1.47 h, all 1.47 h
+  seed 2 ep 19/50 | 49s (backbone 48s) | shuf loss 0.746 val 56.06%/0.9128*acc | elapsed 1.94 h | ETA seed 1.37 h, all 1.37 h
+  seed 2 ep 20/50 | 50s (backbone 49s) | shuf loss 0.698 val 54.95%/0.9160*auc | elapsed 1.95 h | ETA seed 1.28 h, all 1.28 h
+  seed 2 ep 21/50 | 49s (backbone 48s) | shuf loss 0.662 val 56.17%/0.9152*acc | elapsed 1.96 h | ETA seed 1.20 h, all 1.20 h
+  seed 2 ep 22/50 | 49s (backbone 48s) | shuf loss 0.631 val 55.17%/0.9172*auc | elapsed 1.98 h | ETA seed 1.12 h, all 1.12 h
+  seed 2 ep 23/50 | 49s (backbone 48s) | shuf loss 0.592 val 55.51%/0.9188*auc | elapsed 1.99 h | ETA seed 1.05 h, all 1.05 h
+  seed 2 ep 24/50 | 48s (backbone 46s) | shuf loss 0.553 val 56.51%/0.9182*acc | elapsed 2.01 h | ETA seed 0.99 h, all 0.99 h
+  seed 2 ep 25/50 | 49s (backbone 48s) | shuf loss 0.528 val 54.28%/0.9191*auc | elapsed 2.02 h | ETA seed 0.92 h, all 0.92 h
+  seed 2 ep 26/50 | 47s (backbone 46s) | shuf loss 0.500 val 57.06%/0.9171*acc | elapsed 2.03 h | ETA seed 0.86 h, all 0.86 h
+  seed 2 ep 27/50 | 39s (backbone 38s) | shuf loss 0.481 val 56.73%/0.9209*auc | elapsed 2.04 h | ETA seed 0.81 h, all 0.81 h
+  seed 2 ep 28/50 | 43s (backbone 42s) | shuf loss 0.449 val 56.73%/0.9216*auc | elapsed 2.05 h | ETA seed 0.75 h, all 0.75 h
+  seed 2 ep 29/50 | 42s (backbone 42s) | shuf loss 0.431 val 56.62%/0.9234*auc | elapsed 2.07 h | ETA seed 0.70 h, all 0.70 h
+  seed 2 ep 30/50 | 40s (backbone 39s) | shuf loss 0.412 val 56.40%/0.9187 | elapsed 2.08 h | ETA seed 0.65 h, all 0.65 h
+  seed 2 ep 31/50 | 40s (backbone 39s) | shuf loss 0.397 val 55.39%/0.9222 | elapsed 2.09 h | ETA seed 0.61 h, all 0.61 h
+  seed 2 ep 32/50 | 40s (backbone 39s) | shuf loss 0.379 val 55.95%/0.9227 | elapsed 2.10 h | ETA seed 0.56 h, all 0.56 h
+  seed 2 ep 33/50 | 42s (backbone 41s) | shuf loss 0.363 val 56.84%/0.9232 | elapsed 2.11 h | ETA seed 0.52 h, all 0.52 h
+  seed 2 ep 34/50 | 49s (backbone 48s) | shuf loss 0.361 val 56.84%/0.9245*auc | elapsed 2.13 h | ETA seed 0.48 h, all 0.48 h
+  seed 2 ep 35/50 | 48s (backbone 47s) | shuf loss 0.340 val 56.28%/0.9234 | elapsed 2.14 h | ETA seed 0.45 h, all 0.45 h
+  seed 2 ep 36/50 | 48s (backbone 47s) | shuf loss 0.331 val 56.51%/0.9251*auc | elapsed 2.15 h | ETA seed 0.41 h, all 0.41 h
+  seed 2 ep 37/50 | 48s (backbone 47s) | shuf loss 0.327 val 57.51%/0.9255*acc*auc | elapsed 2.17 h | ETA seed 0.38 h, all 0.38 h
+  seed 2 ep 38/50 | 48s (backbone 47s) | shuf loss 0.314 val 57.40%/0.9273*auc | elapsed 2.18 h | ETA seed 0.34 h, all 0.34 h
+  seed 2 ep 39/50 | 48s (backbone 47s) | shuf loss 0.311 val 57.29%/0.9269 | elapsed 2.19 h | ETA seed 0.31 h, all 0.31 h
+  seed 2 ep 40/50 | 48s (backbone 47s) | shuf loss 0.295 val 57.73%/0.9261*acc | elapsed 2.21 h | ETA seed 0.28 h, all 0.28 h
+  seed 2 ep 41/50 | 48s (backbone 47s) | shuf loss 0.298 val 57.40%/0.9279*auc | elapsed 2.22 h | ETA seed 0.25 h, all 0.25 h
+  seed 2 ep 42/50 | 49s (backbone 47s) | shuf loss 0.290 val 55.95%/0.9256 | elapsed 2.23 h | ETA seed 0.22 h, all 0.22 h
+  seed 2 ep 43/50 | 48s (backbone 47s) | shuf loss 0.283 val 56.62%/0.9272 | elapsed 2.25 h | ETA seed 0.19 h, all 0.19 h
+  seed 2 ep 44/50 | 49s (backbone 47s) | shuf loss 0.282 val 56.95%/0.9269 | elapsed 2.26 h | ETA seed 0.16 h, all 0.16 h
+  seed 2 ep 45/50 | 48s (backbone 47s) | shuf loss 0.275 val 57.62%/0.9273 | elapsed 2.27 h | ETA seed 0.13 h, all 0.13 h
+  seed 2 ep 46/50 | 49s (backbone 47s) | shuf loss 0.278 val 57.29%/0.9278 | elapsed 2.29 h | ETA seed 0.10 h, all 0.10 h
+  seed 2 ep 47/50 | 48s (backbone 47s) | shuf loss 0.272 val 57.62%/0.9278 | elapsed 2.30 h | ETA seed 0.08 h, all 0.08 h
+  seed 2 ep 48/50 | 48s (backbone 47s) | shuf loss 0.278 val 57.51%/0.9278 | elapsed 2.31 h | ETA seed 0.05 h, all 0.05 h
+  seed 2 ep 49/50 | 48s (backbone 47s) | shuf loss 0.276 val 57.40%/0.9279 | elapsed 2.33 h | ETA seed 0.03 h, all 0.03 h
+  seed 2 ep 50/50 | 48s (backbone 47s) | shuf loss 0.270 val 57.29%/0.9279 | elapsed 2.34 h | ETA seed 0.00 h, all 0.00 h
+  [Done] ResNet-34 + MLP (live aug.) seed 2 [ClassAcc-selected]: epoch 40 -> test acc 59.51%  AUC 0.9324  ECE 0.0648
+  [Done] ResNet-34 + MLP (live aug.) seed 2 [AUC-selected]: epoch 41 -> test acc 59.75%  AUC 0.9336  ECE 0.0615
+[Seed 2] done: [RAM] this process: peak working set 1.96 GiB (now 0.58, peak private 3.91) | machine: 2.8 of 15.3 GiB free
+# ResNet-34 + MLP with live augmentation
+
+Same live views (TRAIN_TF parameters per seed, epoch and image), recipe, initialisation and selection (held-out class accuracy) as the spiking GRU CBM in `live_aug_order/`.
+
+| Seed | SNN + GRU, live | ResNet-34 + MLP, live | ResNet-34 + MLP, 8 views | ANN live - 8 views |
+|---|---|---|---|---|
+| 0 | 60.08 | 56.01 | 58.39 | -2.38 |
+| 1 | 59.87 | 58.73 | 58.11 | +0.62 |
+| 2 | 60.23 | 59.51 | 59.58 | -0.07 |
+| mean | 60.06 | 58.08 | 58.69 | -0.61 |
+
+SNN + GRU minus ResNet-34 + MLP, both with live augmentation: +1.98 points, 95% CI [+0.86, +3.08] (paired bootstrap over test images, 10,000 resamples, pooled over seeds); TOST p (margin 1 point) = 0.956.
+
+[Guard] PROTECTED FILES UNCHANGED: all 898 pre-existing files verified.

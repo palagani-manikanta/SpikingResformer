@@ -1,0 +1,20 @@
+[
+ {
+  "model": "learned_decoder",
+  "published_anec5": 42.267863306869174,
+  "cpu_rerun_anec5": 42.267863306869174,
+  "diff": 0.0
+ },
+ {
+  "model": "ann34_mlp",
+  "published_anec5": 44.08008284432171,
+  "cpu_rerun_anec5": 44.26993441491198,
+  "diff": 0.18985157059027102
+ },
+ {
+  "model": "ann18_mlp",
+  "published_anec5": 42.28512254055919,
+  "cpu_rerun_anec5": 42.2851225405592,
+  "diff": 7.105427357601002e-15
+ }
+]

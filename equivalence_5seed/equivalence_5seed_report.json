@@ -1,0 +1,78 @@
+{
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "n_boot": 10000,
+ "margin": 1.0,
+ "results": {
+  "acc": {
+   "gap": 0.12426648256817145,
+   "ci95": [
+    -0.9181912323092847,
+    1.17017604418364
+   ],
+   "significant": false,
+   "boot_equivalent_1pt": false,
+   "boot_tost_p": 0.0522,
+   "boot_min_margin": 1.0113910942354138,
+   "seed_gaps": [
+    0.37970314118052784,
+    0.2588885053503631,
+    -0.9319986192613072,
+    0.4832585433206802,
+    0.43148084225059335
+   ],
+   "seed_t_equivalent_1pt": true,
+   "seed_t_tost_p": 0.015194784146407134,
+   "seed_t_min_margin": 0.692779080770536
+  },
+  "auc": {
+   "gap": -0.04832585433206873,
+   "ci95": [
+    -1.0976872626855367,
+    1.0113910942354152
+   ],
+   "significant": false,
+   "boot_equivalent_1pt": true,
+   "boot_tost_p": 0.0385,
+   "boot_min_margin": 0.9252675181221965,
+   "seed_gaps": [
+    0.3451846738004818,
+    0.6903693476009707,
+    -0.7594062823610699,
+    0.15533310321021787,
+    -0.6731101139109441
+   ],
+   "seed_t_equivalent_1pt": true,
+   "seed_t_tost_p": 0.014614994408976734,
+   "seed_t_min_margin": 0.6584194449002528
+  }
+ },
+ "published_3seed": {
+  "acc": {
+   "gap": -0.09780232424347209,
+   "ci95": [
+    -1.1966402025083436,
+    1.0125417098147504
+   ],
+   "boot_min_margin": 1.024335519502941,
+   "seed_t_min_margin": 1.3199731378130573,
+   "boot_tost_p": 0.0544
+  },
+  "auc": {
+   "gap": 0.09204924634679419,
+   "ci95": [
+    -1.03555402140145,
+    1.219652514095041
+   ],
+   "boot_min_margin": 1.0355540214014478,
+   "seed_t_min_margin": 1.3687659884183887,
+   "boot_tost_p": 0.0582
+  }
+ },
+ "verdict": "Not equivalent within \u00b11 pt under every rule/interval; keep the wording \"equivalent within about \u00b11.0 pt\"."
+}

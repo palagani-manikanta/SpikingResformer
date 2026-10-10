@@ -1,0 +1,72 @@
+========================================================================
+  NEC RANDOM-112 CONTROL  [2026-10-08 15:26:20]
+========================================================================
+   [learned_decoder seed 0 random] random CBL (112 neurons, W ~ N(0, 1)) on model.features; dense test acc (shipped head) 58.77%  -> path ...
+      path  1/50  lambda=1.937e-02  NEC=   0.00  iters=6
+      path  6/50  lambda=1.028e-02  NEC=   1.04  iters=159
+      path 11/50  lambda=5.450e-03  NEC=   4.75  iters=708
+      path stopped at 13/50 (NEC 6.28 > 6)
+      NEC= 5: test 44.53%  held-out 38.93%  concepts used 112  (closest-rule test 41.32%)
+   [learned_decoder seed 1 random] random CBL (112 neurons, W ~ N(0, 1)) on model.features; dense test acc (shipped head) 58.37%  -> path ...
+      path  1/50  lambda=1.957e-02  NEC=   0.00  iters=6
+      path  6/50  lambda=1.038e-02  NEC=   1.05  iters=171
+      path 11/50  lambda=5.506e-03  NEC=   4.62  iters=611
+      path stopped at 13/50 (NEC 6.04 > 6)
+      NEC= 5: test 43.79%  held-out 40.04%  concepts used 112  (closest-rule test 43.79%)
+   [learned_decoder seed 2 random] random CBL (112 neurons, W ~ N(0, 1)) on model.features; dense test acc (shipped head) 58.65%  -> path ...
+      path  1/50  lambda=2.036e-02  NEC=   0.00  iters=6
+      path  6/50  lambda=1.080e-02  NEC=   0.85  iters=153
+      path 11/50  lambda=5.729e-03  NEC=   4.88  iters=710
+      path stopped at 13/50 (NEC 6.45 > 6)
+      NEC= 5: test 43.42%  held-out 38.26%  concepts used 112  (closest-rule test 39.21%)
+   [ann34_mlp seed 0 random] random CBL (112 neurons, W ~ N(0, 1)) on model.features; dense test acc (shipped head) 58.39%  -> path ...
+      path  1/50  lambda=2.556e-02  NEC=   0.01  iters=6
+      path  6/50  lambda=1.356e-02  NEC=   0.47  iters=175
+      path 11/50  lambda=7.190e-03  NEC=   3.10  iters=178
+      path stopped at 15/50 (NEC 6.12 > 6)
+      NEC= 5: test 47.12%  held-out 42.16%  concepts used 112  (closest-rule test 44.10%)
+   [ann34_mlp seed 1 random] random CBL (112 neurons, W ~ N(0, 1)) on model.features; dense test acc (shipped head) 58.11%  -> path ...
+      path  1/50  lambda=2.511e-02  NEC=   0.00  iters=6
+      path  6/50  lambda=1.332e-02  NEC=   0.48  iters=155
+      path 11/50  lambda=7.064e-03  NEC=   3.15  iters=660
+      path 16/50  lambda=3.747e-03  NEC=   6.42  iters=609
+      path stopped at 16/50 (NEC 6.42 > 6)
+      NEC= 5: test 47.84%  held-out 43.16%  concepts used 112  (closest-rule test 47.84%)
+   [ann34_mlp seed 2 random] random CBL (112 neurons, W ~ N(0, 1)) on model.features; dense test acc (shipped head) 59.58%  -> path ...
+      path  1/50  lambda=2.250e-02  NEC=   0.00  iters=6
+      path  6/50  lambda=1.193e-02  NEC=   0.83  iters=153
+      path 11/50  lambda=6.329e-03  NEC=   3.90  iters=606
+      path stopped at 15/50 (NEC 6.45 > 6)
+      NEC= 5: test 48.38%  held-out 46.16%  concepts used 112  (closest-rule test 48.38%)
+   [ann18_mlp seed 0 random] random CBL (112 neurons, W ~ N(0, 1)) on model.features; dense test acc (shipped head) 56.20%  -> path ...
+      path  1/50  lambda=3.043e-02  NEC=   0.00  iters=6
+      path  6/50  lambda=1.614e-02  NEC=   0.12  iters=180
+      path 11/50  lambda=8.561e-03  NEC=   2.06  iters=168
+      path 16/50  lambda=4.540e-03  NEC=   5.62  iters=739
+      path stopped at 17/50 (NEC 6.32 > 6)
+      NEC= 5: test 46.51%  held-out 44.38%  concepts used 112  (closest-rule test 44.05%)
+   [ann18_mlp seed 1 random] random CBL (112 neurons, W ~ N(0, 1)) on model.features; dense test acc (shipped head) 56.40%  -> path ...
+      path  1/50  lambda=2.243e-02  NEC=   0.00  iters=6
+      path  6/50  lambda=1.190e-02  NEC=   0.65  iters=156
+      path 11/50  lambda=6.311e-03  NEC=   3.64  iters=219
+      path stopped at 15/50 (NEC 6.38 > 6)
+      NEC= 5: test 43.04%  held-out 39.27%  concepts used 112  (closest-rule test 43.04%)
+   [ann18_mlp seed 2 random] random CBL (112 neurons, W ~ N(0, 1)) on model.features; dense test acc (shipped head) 56.11%  -> path ...
+      path  1/50  lambda=2.443e-02  NEC=   0.00  iters=6
+      path  6/50  lambda=1.296e-02  NEC=   0.39  iters=154
+      path 11/50  lambda=6.873e-03  NEC=   3.29  iters=652
+      path stopped at 15/50 (NEC 6.16 > 6)
+      NEC= 5: test 44.79%  held-out 40.38%  concepts used 112  (closest-rule test 42.08%)
+# NEC with a size-matched random baseline (112 random neurons)
+
+Protocol identical to `nec_sparse/nec_sparse_report.md` (VLG-CBM sparse layer, strict NEC, FISTA, alpha 0.99); only the random CBL size changes from 512 to 112, the size of our concept layer. Mean +- std over seeds 0-2; gap = trained concepts minus random-112 at NEC = 5, pooled paired bootstrap over test images (10,000 resamples).
+
+| Model | Trained 112 concepts ANEC-5 | Random-112 ANEC-5 | Random-512 ANEC-5 | Gap vs random-112 (95% CI) |
+|---|---|---|---|---|
+| SNN + GRU (ours) | 42.52 ± 0.74 | 43.91 ± 0.56 | 44.25 ± 1.59 | -1.39 [-2.19, -0.60] |
+| ResNet-34 + MLP | 44.82 ± 0.95 | 47.78 ± 0.63 | 48.56 ± 1.43 | -2.96 [-3.73, -2.21] |
+| ResNet-18 + MLP | 41.43 ± 1.23 | 44.78 ± 1.73 | 46.12 ± 0.06 | -3.35 [-4.07, -2.62] |
+
+Reading: a CI entirely above 0 means the trained concepts beat a random layer of the same size at NEC = 5; a CI containing 0 means no detectable difference; entirely below 0 means random wins.
+
+[Guard] WARNING: changed outside nec_random112/: ['aug_views/aug_views_log.txt', 'aug_views/runs/ann34_mlp_seed3/best_acc.pth', 'aug_views/runs/ann34_mlp_seed3/best_auc.pth', 'aug_views/runs/ann34_mlp_seed3/history.json', 'aug_views/runs/ann34_mlp_seed3/last.pth', 'aug_views/runs/ann34_mlp_seed3/result.json', 'aug_views/runs/ann34_mlp_seed3/test_outputs_acc.npz', 'aug_views/runs/ann34_mlp_seed3/test_outputs_auc.npz', 'aug_views/runs/learned_decoder_seed4/best_acc.pth', 'aug_views/runs/learned_decoder_seed4/best_auc.pth']
