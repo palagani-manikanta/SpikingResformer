@@ -1,0 +1,14 @@
+{
+ "model": "learned_decoder",
+ "seed": 4,
+ "lambda_c": 3.0,
+ "heads": 8,
+ "selected_epoch": 42,
+ "held_out_acc": 59.399332591768626,
+ "test_acc": 60.11391094235415,
+ "test_concept_auc": 0.9548071155047954,
+ "concept_err_pct": 7.107568173973075,
+ "train_minutes": 2.797829008102417,
+ "extra_params": 12296,
+ "trainable_params": 1979584
+}

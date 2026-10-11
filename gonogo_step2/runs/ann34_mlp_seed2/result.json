@@ -1,0 +1,14 @@
+{
+ "model": "ann34_mlp",
+ "seed": 2,
+ "lambda_c": 3.0,
+ "heads": 8,
+ "selected_epoch": 27,
+ "held_out_acc": 59.51056729699666,
+ "test_acc": 60.424577148774596,
+ "test_concept_auc": 0.9549802310936606,
+ "concept_err_pct": 6.797672469056659,
+ "train_minutes": 0.9635973691940307,
+ "extra_params": 4104,
+ "trainable_params": 1971697
+}
