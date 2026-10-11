@@ -39,3 +39,4 @@ All numbers come from the repository reports listed in `REVIEW_RESULTS.md` (sect
 - Energy at one precision for arithmetic and memory (Section V-F): `energy_precision.py`, with results in `energy_precision/report.md`.
 - ANN live augmentation (Section V-B): `live_aug_ann.py`, with results in `live_aug_ann/report.md` (class-accuracy selection) and the concept-AUC-selection check reported in the paper.
 - Concept-loss go/no-go (Section V-E, Table V): `gonogo_step1.py` and `nec_oracle.py`, with results in `gonogo_step1/report.md` (seeds 0-2), `report_seeds34.md` (confirmation) and `report_seeds01234.md` (pooled), and `nec_oracle/report.md`.
+- Attention readout (Section V-F, last row of Table IV): `gonogo_step2.py`, with results in `gonogo_step2/report.md`. Note: Fig. energy_memory.pdf is no longer used in the paper (its numbers are in Table V).
