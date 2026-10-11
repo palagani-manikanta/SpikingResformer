@@ -38,3 +38,4 @@ All numbers come from the repository reports listed in `REVIEW_RESULTS.md` (sect
 - The five-seed equivalence test (Section V-A): `equivalence_5seed.py`, with results in `equivalence_5seed/equivalence_5seed_report.md`.
 - Energy at one precision for arithmetic and memory (Section V-F): `energy_precision.py`, with results in `energy_precision/report.md`.
 - ANN live augmentation (Section V-B): `live_aug_ann.py`, with results in `live_aug_ann/report.md` (class-accuracy selection) and the concept-AUC-selection check reported in the paper.
+- Concept-loss go/no-go (Section V-E, Table V): `gonogo_step1.py` and `nec_oracle.py`, with results in `gonogo_step1/report.md` (seeds 0-2), `report_seeds34.md` (confirmation) and `report_seeds01234.md` (pooled), and `nec_oracle/report.md`.
