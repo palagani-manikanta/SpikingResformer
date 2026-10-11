@@ -1,0 +1,13 @@
+{
+ "spikes_per_image": 23372.40421125302,
+ "spike_density": 0.019408684938394368,
+ "snn_att_ac": 210351.63790127716,
+ "snn_att_mac": 12544,
+ "snn_att_mj": 0.00024701887411114946,
+ "ann_att_mac": 226576,
+ "ann_att_mj": 0.0010422496,
+ "snn_total_mj": 2.9782470188741113,
+ "ann_total_mj": 16.8610422496,
+ "ratio": 5.661398179112123,
+ "extra_bytes_spike_map_read": 150528.0
+}
