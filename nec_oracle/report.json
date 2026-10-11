@@ -1,0 +1,10 @@
+{
+ "true attributes (perfect concepts)": {
+  "5": 100.0,
+  "10": 100.0
+ },
+ "true attributes + 10% label flips": {
+  "5": 56.28236106316879,
+  "10": 87.86675871591302
+ }
+}
