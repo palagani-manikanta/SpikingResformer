@@ -24,29 +24,29 @@
 \title{Calibrated Concept Bottleneck Models on a Frozen Spiking Vision Backbone: A Controlled Comparison with Capacity-Matched ANNs}
 
 \author{
-\IEEEauthorblockN{P.~Manikanta}
-\IEEEauthorblockA{\textit{[Department]} \\
-\textit{[Institution]}\\
-{[City]}, India \\
-{[email]}}
+\IEEEauthorblockN{1\textsuperscript{st} G.~Govardhan Satya}
+\IEEEauthorblockA{\textit{Artificial Intelligence and Data Science} \\
+\textit{Amrita School of Computing, Amrita Vishwa Vidyapeetham}\\
+Amritapuri, Kerala, India \\
+am.sc.u4aid24015@am.students.amrita.edu}
 \and
-\IEEEauthorblockN{Ch.~Bhargav}
-\IEEEauthorblockA{\textit{[Department]} \\
-\textit{[Institution]}\\
-{[City]}, India \\
-{[email]}}
+\IEEEauthorblockN{2\textsuperscript{nd} P.~Manikanta}
+\IEEEauthorblockA{\textit{Artificial Intelligence and Data Science} \\
+\textit{Amrita School of Computing, Amrita Vishwa Vidyapeetham}\\
+Amritapuri, Kerala, India \\
+am.sc.u4aid24035@am.students.amrita.edu}
 \and
-\IEEEauthorblockN{Govardhan}
-\IEEEauthorblockA{\textit{[Department]} \\
-\textit{[Institution]}\\
-{[City]}, India \\
-{[email]}}
+\IEEEauthorblockN{3\textsuperscript{rd} K.~Deekshith}
+\IEEEauthorblockA{\textit{Artificial Intelligence and Data Science} \\
+\textit{Amrita School of Computing, Amrita Vishwa Vidyapeetham}\\
+Amritapuri, Kerala, India \\
+am.sc.u4aid24020@am.students.amrita.edu}
 \and
-\IEEEauthorblockN{K.~Deekshith}
-\IEEEauthorblockA{\textit{[Department]} \\
-\textit{[Institution]}\\
-{[City]}, India \\
-{[email]}}
+\IEEEauthorblockN{4\textsuperscript{th} CH.~S.~S.~Bhargav}
+\IEEEauthorblockA{\textit{Artificial Intelligence and Data Science} \\
+\textit{Amrita School of Computing, Amrita Vishwa Vidyapeetham}\\
+Amritapuri, Kerala, India \\
+am.sc.u4aid24009@am.students.amrita.edu}
 }
 
 \maketitle
@@ -75,7 +75,7 @@ We attach a CBM to the frozen SpikingResformer-Ti backbone of Shi \emph{et al.}~
 \item Ablations that isolate spike timing, an evaluation under VLG-CBM's sparse-layer protocol, and an energy analysis that adds first-order memory traffic to operation counts.
 \item An explicit account of negative results, including a stability test showing that low-confidence predictions change under imperceptible input noise.
 \end{itemize}
-In short, the answers are: Q1, yes in the sense that the accuracy is statistically indistinguishable from ResNet-34 (with five seeds, equivalence within $\pm$1 point holds over seeds and narrowly misses over test images); Q2, yes, but modestly: on static images, order adds about one point; Q3, yes, but calibration helps the ANN almost as much; Q4, only for compute alone or under optimistic on-chip memory assumptions, not with off-chip DRAM, and not at all once arithmetic and memory share one 8-bit precision.
+In short, the answers are: Q1, yes in the sense that the accuracy is statistically indistinguishable from ResNet-34; Q2, yes, but modestly: on static images, order adds about one point; Q3, yes, but calibration helps the ANN almost as much; Q4, only for compute alone, not once memory traffic is counted at one consistent precision.
 
 %% ------------------------------------------------------------------------------------------------
 \section{Related Work}
@@ -396,11 +396,11 @@ While building a live demonstration we noticed that the same test image can rece
 %% ------------------------------------------------------------------------------------------------
 \section{Discussion and Limitations}\label{sec:disc}
 
-\textbf{What the evidence supports.} A frozen spiking backbone with a temporal decoder supports a concept bottleneck whose accuracy is statistically indistinguishable from a capacity-matched ResNet-34 (equivalent within about $\pm$1.0 point over five seeds), at about 5.7$\times$ lower estimated compute energy. The spike train carries useful information in its order, and per-concept calibration makes the concept probabilities well calibrated on average and corrections more effective, without a significant accuracy cost; individual concept decisions near 0.5 can still flip (Section~\ref{sec:stab}).
+\textbf{What the evidence supports.} A frozen spiking backbone with a temporal decoder supports a concept bottleneck whose accuracy is statistically indistinguishable from a capacity-matched ResNet-34 (equivalent within about $\pm$1.0 point over five seeds), at about 5.7$\times$ lower estimated compute energy. The spike train carries useful information in its order, and per-concept calibration makes the concept probabilities well calibrated on average and corrections more effective, without a significant accuracy cost.
 
 \textbf{What it does not support.} The spiking model's raw concepts are not better than a capacity-matched ANN's; calibration is a general post-hoc step that helps ANNs almost as much; ResNet-50 is more accurate; with off-chip DRAM the SNN costs more energy, the on-chip case is a bound, and with 8-bit arithmetic and memory the SNN costs more energy even on chip; fewer time steps lose accuracy; and under the NEC\,=\,5 protocol the jointly trained concepts lose to a random layer of the same size. Section~\ref{sec:improved} fixes this, but even then the spiking model is tied with ResNet-34 + MLP, not ahead.
 
-\textbf{Limitations.} The backbone is frozen and pretrained only on ImageNet; fine-tuning it with surrogate gradients may change every comparison. We use one dataset, and three seeds for all comparisons except the headline one with ResNet-34 + MLP (five seeds), where equivalence within $\pm$1 point narrowly misses over test images ($p=0.052$). Concept labels are class-level (every species has a unique concept vector), so full intervention reveals the class and only partial intervention is informative; intervention is simulated rather than tested with users. The concept-loss weight $\lambda_c=3$ was chosen on three seeds and confirmed on two more; the stability test was not repeated on the improved model, and ResNet-50 was not given the improved recipe. Energy numbers are first-order estimates, not hardware measurements. The stability test uses one model seed and one GPU; the variation of full-test accuracy across hardware was not measured.
+\textbf{Limitations.} The backbone is frozen and pretrained only on ImageNet; fine-tuning it with surrogate gradients may change every comparison. We use one dataset and three to five seeds. Concept labels are class-level, so full intervention reveals the class, and intervention is simulated rather than tested with users. The concept-loss weight $\lambda_c=3$ was chosen on three seeds and confirmed on two more; the stability test was not repeated on the improved model, and ResNet-50 was not given the improved recipe. Energy numbers are first-order estimates, not hardware measurements. The stability test uses one model seed and one GPU; the variation of full-test accuracy across hardware was not measured.
 
 \section{Conclusion}
 We presented, to our knowledge, the first concept bottleneck model on a spiking vision backbone and tested it against controls that share its trainable capacity, data and seeds. Its accuracy is statistically indistinguishable from a capacity-matched ResNet-34 CBM at 5.7$\times$ lower estimated compute energy, it benefits from reading spikes in order, and it supports calibrated, correctable concepts, while its memory energy and per-image stability leave clear room for improvement. With a tripled concept-loss weight and an attention readout its concepts beat a random layer by 5.5 points and its accuracy rises to 61.16\%. Next steps are event-camera data such as DVS128 Gesture~\cite{amir2017low}, where timing carries real information; larger SpikingResformer variants against ResNet-50; and measurements on neuromorphic hardware.
